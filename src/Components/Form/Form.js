@@ -14,8 +14,12 @@ class Form extends Component{
             imgurl: "",
             
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.clearInput =this.clearInput.bind(this);
+        this.baseState = this.state 
+        this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangePrice =this.handleChangePrice.bind(this);
+        this.onImageChange = this.onImageChange.bind(this);
+       
+        
     }
         
        
@@ -30,9 +34,25 @@ class Form extends Component{
     //   </label>
 
   
-    handleChange (evt) {
+    handleChangeName (evt) {
         this.setState({ [evt.target.name]: evt.target.value });
       }
+
+      handleChangePrice (evt) {
+        this.setState({ [evt.target.price]: evt.target.value });
+      }
+
+      resetForm = () => {
+        this.setState(this.baseState)
+      }
+
+      onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+          this.setState({
+            image: URL.createObjectURL(event.target.files[0])
+          });
+        }
+       }
 
     
 
@@ -43,23 +63,24 @@ class Form extends Component{
         
 
         return(
-            <div>
+            <form>
                 <section>
+                <img src={this.state.image} alt="Product Image"/>
+                <br/>
         <label>Image URL:</label>
-        <input type="text" 
-                 name= "imgurl" onChange={this.handleChange}/>
+        <input type="file"  initialValue="" onChange={this.onImageChange}/>
         <label>Product Name:</label>
         <input type ="text" 
-                 name="product" onChange={this.handleChange}/>
+                 initialValue="" onChange={this.handleChangeName}/>
         <label>Price:</label>
         <input type ="number"
-                 name="price" onChange={this.handleChange}/>
-            <button>Cancel</button>
+                 initialValue=""onChange={this.handleChangePrice}/>
+            <button onClick={this.resetForm}>Cancel</button>
             <button>Add to Inventory</button>
             </section>
 
 
-            </div>
+            </form>
 
         )
     }
