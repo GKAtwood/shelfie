@@ -11,7 +11,7 @@ class Dashboard extends Component{
               
         return(
             <div>
-                {this.props.products}
+                {this.props.item}
                 
               <Product />
 

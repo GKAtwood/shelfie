@@ -55,7 +55,7 @@ class Form extends Component{
         return(
             <form>
                 <section>
-                <img src={this.state.image} alt="Product Image"/>
+                <img src={this.state.image} alt="Your Product Here"/>
                 <br/>
         <label>Image URL:</label>
         <input type="file"  initialValue="" onChange={this.onImageChange}/>

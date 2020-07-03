@@ -39,10 +39,10 @@ class App extends Component {
     return(
     <div className="App">
       <Header />
-      {/* {this.state.products.map((item)=>(<Dashboard item={item}/>))} */}
-      {this.state.products.map(products => (
+      {this.state.products.map((item)=>(<Dashboard item={item} inventoryFn={this.getInventory}/>))}
+      {/* {this.state.products.map(products => (
             <Dashboard key={products.id} products={products} inventoryFn={this.getInventory}/>
-          ))}
+          ))} */}
 
       {/* <Dashboard /> */}
       <Form />
