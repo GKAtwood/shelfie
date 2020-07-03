@@ -9,16 +9,48 @@ import Header from './Components/Header/Header';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      products: [],
+     
+    }
+  }
+
+  componentDidMount(){
+    this.getInventory();
+  }
+
+  getInventory = () => {    
+    axios.get('/api/inventory')
+    .then(res => this.setState({inventory: res.data}))
+    .catch(err => console.log(err))
+  }
+   
+
+
+
+
+
+
+
+
   render(){
     return(
     <div className="App">
       <Header />
-      <Dashboard />
+      {/* {this.state.products.map((item)=>(<Dashboard item={item}/>))} */}
+      {this.state.products.map(products => (
+            <Dashboard key={products.id} products={products} inventoryFn={this.getInventory}/>
+          ))}
+
+      {/* <Dashboard /> */}
       <Form />
-    </div>
-    )
-  }
+      </div>
+      );
+    }
 }
+
 
 export default App;
 

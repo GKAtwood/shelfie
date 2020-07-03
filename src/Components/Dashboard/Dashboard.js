@@ -7,9 +7,12 @@ import Product from '../Product/Product'
 
 class Dashboard extends Component{
     render(){
+        // const {products} = this.props;
+              
         return(
             <div>
-                <p>Dashboard</p>
+                {this.props.products}
+                
               <Product />
 
 

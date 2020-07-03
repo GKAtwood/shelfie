@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require ('express')
 const app = express()
-const massive = require('massive')
+const massive = require('massive');
+const ctrl = require('./controller');
 const {SERVER_PORT, CONNECTION_STRING} = process.env
-// const crtl = require('./controller')
+
 
 app.use(express.json())
 
@@ -14,6 +15,9 @@ massive({
     app.set('db', db);
     console.log('db connected');
 });
+
+app.get('/api/inventory', ctrl.getInventory);
+app.post('/api/product', ctrl.addProduct);
 
 
 app.listen(SERVER_PORT, () => console.log(`Living it up on port ${SERVER_PORT}`))

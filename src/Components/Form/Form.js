@@ -23,16 +23,6 @@ class Form extends Component{
     }
         
        
-
-    //     <label>
-    //     Is going:
-    //     <input
-    //       name="isGoing"
-    //       type="checkbox"
-    //       checked={this.state.isGoing}
-    //       onChange={this.handleInputChange} />
-    //   </label>
-
   
     handleChangeName (evt) {
         this.setState({ [evt.target.name]: evt.target.value });
