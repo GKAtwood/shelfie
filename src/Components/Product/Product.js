@@ -1,22 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Dashboard from '../Dashboard/Dashboard';
+
 
 
 ///no state////no methods
 
 
 class Product extends Component{
-    
-    render(){
+ render(){
         
 
         return(
             <div>
-            {this.props.item}
-            {this.props.value}
+              <h1>Product</h1>
+            
             </div>
 
         )
+        }
+        
+        
     }
-}
+
+
 
 export default Product

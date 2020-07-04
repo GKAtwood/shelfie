@@ -15,6 +15,7 @@ class App extends Component {
       products: [],
      
     }
+   
   }
 
   componentDidMount(){
@@ -36,18 +37,26 @@ class App extends Component {
 
 
   render(){
-    return(
+    console.log(this.state)
+    
+   
+  
+   return(
     <div className="App">
       <Header />
       <div>
-    {/* {this.state.products.map((item)=>(<Dashboard item={item} inventoryFn={this.getInventory}/>))} */}
-      {this.state.products.map(products => (
-            <Dashboard key={products.id} products={products} inventoryFn={this.getInventory}/>
-          ))}
+
+         
+{/*       
+    {this.state.products.map((item)=>(<Dashboard item={item} inventoryFn={this.getInventory}/>))} */}
+    {/* {this.state.products.map(product => (
+            <li key={product.product_id} product={product} inventoryFn={this.getProducts}></li>
+          ))} */}
+       <Dashboard productList={this.state.inventory}/>
+        
           </div>
 
-      {/* <Dashboard /> */}
-      <Form />
+    <Form />
       </div>
       );
     }
