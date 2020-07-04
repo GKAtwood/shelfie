@@ -4,6 +4,8 @@ insert into products (
     img
 ) values (
     ${productName},
-    ${productPrice},
+    ${price},
     ${productImg}
 );
+
+SELECT * FROM products; 

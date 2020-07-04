@@ -7,11 +7,11 @@ import Product from '../Product/Product'
 
 class Dashboard extends Component{
     render(){
-        // const {products} = this.props;
+        
               
         return(
             <div>
-                {this.props.item}
+                
                 
               <Product />
 
