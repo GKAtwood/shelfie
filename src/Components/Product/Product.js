@@ -11,7 +11,7 @@ class Product extends Component{
         
 
         return(
-            <div>
+            <div className ="Product">
               <h1>Product</h1>
             
             </div>

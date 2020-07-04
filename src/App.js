@@ -15,6 +15,7 @@ class App extends Component {
       products: [],
      
     }
+    this.getInventory = this.getInventory.bind(this);
    
   }
 
@@ -24,40 +25,34 @@ class App extends Component {
 
   getInventory = () => {    
     axios.get('/api/inventory')
-    .then(res => this.setState({inventory: res.data}))
+    .then(res => this.setState({products: res.data}))
     .catch(err => console.log(err))
   }
    
 
 
 
-
-
-
-
-
-  render(){
+render(){
     console.log(this.state)
-    
-   
+  
   
    return(
     <div className="App">
       <Header />
-      <div>
+
+      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory}/>
+      <Form inventoryFn= {this.getInventory} />
+
+      </div>
+    
 
          
-{/*       
-    {this.state.products.map((item)=>(<Dashboard item={item} inventoryFn={this.getInventory}/>))} */}
-    {/* {this.state.products.map(product => (
-            <li key={product.product_id} product={product} inventoryFn={this.getProducts}></li>
-          ))} */}
-       <Dashboard productList={this.state.inventory}/>
-        
-          </div>
 
-    <Form />
-      </div>
+        
+          
+
+    
+     
       );
     }
 }
