@@ -13,7 +13,7 @@ const Dashboard = (props) => {
         console.log(item)
         return(
             
-            <div key={item}>
+            <div key={item.id}>
                 <h2>{item.product_name}</h2>
                 <h3>{item.price}</h3>
                 <h4>{item.img}</h4>
@@ -29,6 +29,9 @@ const Dashboard = (props) => {
 <div className = "Dashboard">
         <h1>Dashboard</h1>
         <Product list = {mappedProducts}/>
+
+        
+        
         
         
 

@@ -63,15 +63,18 @@ class Form extends Component{
             <form className ="Form">
                 <section>
                 <img src={this.state.image} alt="Your Product Here"/>
-                <br/>
+                <>
         <label>Image URL:</label>
         <input type="file"   onChange={this.onImageChange}/>
+        </>
         <label>Product Name:</label>
         <input type ="text" 
                   onChange={this.handleChangeName}/>
+                 <>
         <label>Price:</label>
         <input type ="number"
                  onChange={this.handleChangePrice}/>
+                </>
             <button onClick={this.resetForm}>Cancel</button>
             <button  onClick={this.addInventory}>Add to Inventory</button>
             </section>

@@ -9,23 +9,30 @@ export default class Product extends Component{
     
  render(){
     console.log(this.props)
-    // return (
-    //     <ul>
-    //       {list.map((item) => (
-    //         <li key={item.id}>
-    //           <span>{item.firstname}</span>
-    //           <span>{item.lastname}</span>
-    //           <span>{item.year}</span>
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   );
-    // };
+    
         
 
         return(
-           <div>
-                {this.props.list}
+           <div className = 'Product'>
+              <h1 >
+                {this.props.list[0]}
+                <button>Edit</button>
+                <button>Delete</button>
+              </h1>
+               <h2>
+                {this.props.list[1]}
+                <button>Edit</button>
+                <button>Delete</button>
+                </h2>
+                <h3>
+                {this.props.list[2]}
+                <button>Edit</button>
+                <button>Delete</button>
+                </h3>
+                
+                
+                
+               
 
            </div>
         
