@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+.Header{
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bolder;
+  margin-top: 50px;
+  margin-right: 1300px;
+  padding: 20px;
+}
+
+.Form{
+  border-style: dotted;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  margin-left: 900px;
+  
+  
+}
+
 .Form label{
   
   display: flex;
@@ -10,6 +29,7 @@
   font-size: 20px;
   font-family: monospace;
   font-weight: bolder;
+ 
   
 }
 
@@ -18,3 +38,19 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* .Product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 10px;
+  font-family: monospace;
+  border-style: dotted;
+  margin-right: 500px;
+ 
+
+}
+
+.Dashboard h2{
+  
+} */

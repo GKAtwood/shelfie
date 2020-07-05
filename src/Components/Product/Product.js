@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
-import Dashboard from '../Dashboard/Dashboard';
 
 
 
 ///no state////no methods
 
 
-class Product extends Component{
+export default class Product extends Component{
+    
  render(){
+    console.log(this.props)
+    // return (
+    //     <ul>
+    //       {list.map((item) => (
+    //         <li key={item.id}>
+    //           <span>{item.firstname}</span>
+    //           <span>{item.lastname}</span>
+    //           <span>{item.year}</span>
+    //         </li>
+    //       ))}
+    //     </ul>
+    //   );
+    // };
         
 
         return(
-            <div className ="Product">
-              <h1>Product</h1>
-            
-            </div>
+           <div>
+                {this.props.list}
 
+           </div>
+        
+        
+    
+
+  
         )
-        }
-        
-        
-    }
-
-
-
-export default Product
+ }
+}

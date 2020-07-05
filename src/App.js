@@ -16,6 +16,7 @@ class App extends Component {
      
     }
     this.getInventory = this.getInventory.bind(this);
+    this.deleteProduct =this.deleteProduct.bind(this);
    
   }
 
@@ -28,6 +29,12 @@ class App extends Component {
     .then(res => this.setState({products: res.data}))
     .catch(err => console.log(err))
   }
+
+  deleteProduct = () => {
+    axios.delete(`/api/product/${this.props.products.product_id}`)
+    .then(() => this.props.getInventory())
+    .catch(err => console.log(err))
+}
    
 
 
@@ -40,7 +47,7 @@ render(){
     <div className="App">
       <Header />
 
-      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory}/>
+      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory} deleteFn ={this.deleteProduct}/>
       <Form inventoryFn= {this.getInventory} />
 
       </div>
