@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 
+
 // methods handle change (one for each input)  post new product to Database, clear input boxes
 
 
@@ -13,22 +14,32 @@ class Form extends Component{
             name: "",
             price: 0,
             imgurl: "",
+            editing: false
             
         }
         this.baseState = this.state 
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangePrice =this.handleChangePrice.bind(this);
         this.onImageChange = this.onImageChange.bind(this);
+        this.addProduct = this.addProduct.bind(this);
+        
        
         
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.products !== this.state.products) {
+          console.log('This has changed!')
+        }
+      }
+
     addProduct = () => {
-        axios.post('/api/product', {productName: this.state.name, productPrice: this.state.price, productImg: this.state.img})
+        axios.post('/api/product', {productName: this.state.name, productPrice: this.state.price, productImg: this.state.imgurl})
         .then(() => this.getInventory())
         .catch(err => console.log(err))
       }
-        
+
+    
        
   
     handleChangeName (evt) {
@@ -60,6 +71,7 @@ class Form extends Component{
        console.log(this.props)
 
         return(
+           
             <form className ="Form">
                 <section>
                 <img src={this.state.image} alt="Your Product Here"/>
@@ -68,19 +80,22 @@ class Form extends Component{
         <input type="file"   onChange={this.onImageChange}/>
         </>
         <label>Product Name:</label>
-        <input type ="text" 
+        <input type ="text"  
                   onChange={this.handleChangeName}/>
                  <>
         <label>Price:</label>
-        <input type ="number"
+        <input type ="number" 
                  onChange={this.handleChangePrice}/>
                 </>
             <button onClick={this.resetForm}>Cancel</button>
-            <button  onClick={this.addInventory}>Add to Inventory</button>
+           
+            <button  onClick={this.addProduct}>Add to Inventory</button>
             </section>
 
 
             </form>
+
+            
 
         )
     }

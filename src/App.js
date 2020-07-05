@@ -8,6 +8,7 @@ import Header from './Components/Header/Header';
 
 
 
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -17,6 +18,8 @@ class App extends Component {
     }
     this.getInventory = this.getInventory.bind(this);
     this.deleteProduct =this.deleteProduct.bind(this);
+    this.editProduct = this.editProduct.bind(this);
+    
    
   }
 
@@ -35,6 +38,13 @@ class App extends Component {
     .then(() => this.props.getInventory())
     .catch(err => console.log(err))
 }
+editProduct = () => {
+  axios.put(`/api/product/${this.props.product.product_id}`, {productName: this.state.nameInput}, {productPrice: this.state.priceInput}, {productImg: this.state.imgInput})
+  .then(() => this.props.getInventory())
+  .catch(err => console.log(err))
+}
+  
+
    
 
 
@@ -47,8 +57,9 @@ render(){
     <div className="App">
       <Header />
 
-      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory} deleteFn ={this.deleteProduct}/>
+      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory} deleteFn ={this.deleteProduct} editFn={this.editProduct}/>
       <Form inventoryFn= {this.getInventory} />
+  
 
       </div>
     

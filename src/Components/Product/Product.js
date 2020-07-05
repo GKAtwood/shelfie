@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 
 export default class Product extends Component{
-    
+   
  render(){
     console.log(this.props)
     
@@ -22,7 +22,7 @@ export default class Product extends Component{
                <h2>
                 {this.props.list[1]}
                 <button>Edit</button>
-                <button>Delete</button>
+                <button >Delete</button>
                 </h2>
                 <h3>
                 {this.props.list[2]}

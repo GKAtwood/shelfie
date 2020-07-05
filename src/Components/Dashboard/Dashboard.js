@@ -28,7 +28,7 @@ const Dashboard = (props) => {
 
 <div className = "Dashboard">
         <h1>Dashboard</h1>
-        <Product list = {mappedProducts}/>
+        <Product list = {mappedProducts} deleteFn ={props.deleteProduct} inventoryFn= {props.getInventory} editFn ={props.editProduct}/>
 
         
         

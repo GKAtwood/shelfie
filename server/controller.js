@@ -24,6 +24,17 @@ module.exports = {
         db.delete_product(id)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err))
-    }
+    },
+
+    editProduct: (req, res) => {
+        const {id} = req.params,
+              {productName, productPrice, productImg} = req.body,
+              db = req.app.get('db');
+
+        db.edit_product({productName, productPrice, productImg, id})
+        .then(() => res.sendStatus(200))
+        .catch(err => res.status(500).send(err))
+    },
+ 
 }
 
