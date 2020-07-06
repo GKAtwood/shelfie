@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 
+
 // methods handle change (one for each input)  post new product to Database, clear input boxes
 
 
@@ -14,7 +15,7 @@ class Form extends Component{
             name: "",
             price: 0,
             imgurl: "",
-            editing: false
+            
             
         }
         this.baseState = this.state 
@@ -75,18 +76,18 @@ class Form extends Component{
             <form className ="Form">
                 <section>
                 <img src={this.state.image} alt="Your Product Here"/>
-                <>
-        <label>Image URL:</label>
-        <input type="file"   onChange={this.onImageChange}/>
-        </>
+               
+        <label>Image URL:
+            <input type="file"   onChange={this.onImageChange}/>
+        </label>
         <label>Product Name:</label>
-        <input type ="text"  
+            <input type ="text"  
                   onChange={this.handleChangeName}/>
-                 <>
+         
         <label>Price:</label>
-        <input type ="number" 
+            <input type ="number" 
                  onChange={this.handleChangePrice}/>
-                </>
+            
             <button onClick={this.resetForm}>Cancel</button>
            
             <button  onClick={this.addProduct}>Add to Inventory</button>

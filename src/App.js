@@ -38,7 +38,7 @@ class App extends Component {
     .then(() => this.props.getInventory())
     .catch(err => console.log(err))
 }
-editProduct = () => {
+  editProduct = () => {
   axios.put(`/api/product/${this.props.product.product_id}`, {productName: this.state.nameInput}, {productPrice: this.state.priceInput}, {productImg: this.state.imgInput})
   .then(() => this.props.getInventory())
   .catch(err => console.log(err))

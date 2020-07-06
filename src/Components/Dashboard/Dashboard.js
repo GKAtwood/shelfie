@@ -4,7 +4,6 @@ import Product from '../Product/Product'
 
 
 ////no state///no methods
-
 const Dashboard = (props) => {
     console.log(props)
    
