@@ -10,7 +10,7 @@ class Dashboard extends Component {
 			products:[]
 		}
 	}
-	componentWillMount() {
+	componentDidMount() {
 		this.getItemList();
 	}
 	componentDidUpdate(){
@@ -22,6 +22,7 @@ class Dashboard extends Component {
 		});
 	}
 	render() {
+        // console.log(this.state)
 		const list = this.state.products.map((product, index) => {
 			return (
 				<Product

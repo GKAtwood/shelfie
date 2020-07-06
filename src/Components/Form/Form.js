@@ -28,7 +28,7 @@ class Form extends Component {
          
     }
     componentDidUpdate(props){
-        if(props.match.params.id != this.props.match.params.id){
+        if(props.match.params.id !== this.props.match.params.id){
             this.setState({
                 product_name: "",
 			          price: "",
@@ -76,7 +76,7 @@ class Form extends Component {
 					className="image-preview"
 					src={
 						this.state.img === '' ? (
-							'http://experienceidyllwild.com/images/no-image-available2.jpg'
+							'https://http.cat/404'
 						) : (
 							this.state.img
 						)

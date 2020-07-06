@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Product(props) {
+   
 	return (
 		<div className="product-box">
 			<img src={props.currentProduct.img} alt={props.currentProduct.product_name} className="product-image" />
@@ -16,7 +17,7 @@ export default function Product(props) {
 					<button
 						className="product-button"
 						onClick={() => {
-							axios.delete('/api/inventory/' + props.currentProduct.product_id).then(() => {
+							axios.delete('/api/product/:id' + props.currentProduct.product_id).then(() => {
 								props.getItemList();
 							});
 						}}
