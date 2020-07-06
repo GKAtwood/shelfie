@@ -13,7 +13,7 @@ class Form extends Component {
             
 		};
 	}
-	componentWillMount(props) {
+	componentDidMount(props) {
 		if (this.props.match.params.id) {
             axios.get('/api/inventory/'+this.props.match.params.id)
             .then(response=> {
