@@ -17,7 +17,7 @@ export default function Header() {
 				<Link to="/">
 					<button className="link-button">Dashboard</button>
 				</Link>
-				<Link to="/new-product-form">
+				<Link to="/add">
 					<button className="link-button">Add Inventory</button>
 				</Link>
 			</div>

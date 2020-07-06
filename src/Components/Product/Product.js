@@ -24,7 +24,7 @@ export default function Product(props) {
 						{' '}
 						Delete
 					</button>
-					<Link to={"/edit-product-form/" + props.currentProduct.id}>
+					<Link to={"/edit:id" + props.currentProduct.id}>
 						<button className="product-button">Edit</button>
 					</Link>
 				</div>
