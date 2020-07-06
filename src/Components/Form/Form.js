@@ -45,9 +45,9 @@ class Form extends Component {
 	
 	addItem() {
 		const newItem = {
-			name: this.state.name,
+			product_name: this.state.product_name,
 			price: this.state.price,
-			image_url: this.state.image_url
+			img: this.state.img
 		};
 
 		axios.post('/api/inventory', newItem).then(() => {
@@ -56,9 +56,9 @@ class Form extends Component {
 	}
 	updateItem() {
 		const editedItem = {
-			name: this.state.name,
+			product_name: this.state.product_name,
 			price: this.state.price,
-			image_url: this.state.image_url
+			img: this.state.img
 		};
 
 		axios.put('/api/inventory/' + this.state.currentId, editedItem).then(() => {
@@ -75,19 +75,19 @@ class Form extends Component {
 				<img
 					className="image-preview"
 					src={
-						this.state.image_url === '' ? (
+						this.state.img === '' ? (
 							'http://experienceidyllwild.com/images/no-image-available2.jpg'
 						) : (
-							this.state.image_url
+							this.state.img
 						)
 					}
-					alt={this.state.name}
+					alt={this.state.product_name}
 				/>
 				<div className="form-inputs">
 					<p className="input-label">Image URL:</p>
-					<input value={this.state.image_url} onChange={(e) => this.handleChange(e, 'image_url')} />
+					<input value={this.state.img} onChange={(e) => this.handleChange(e, 'img')} />
 					<p className="input-label">Product Name:</p>
-					<input value={this.state.name} onChange={(e) => this.handleChange(e, 'name')} />
+					<input value={this.state.product_name} onChange={(e) => this.handleChange(e, 'product_name')} />
 					<p className="input-label">Price:</p>
 					<input value={this.state.price} onChange={(e) => this.handleChange(e, 'price')} />
 					<div className="form-buttons-container">
