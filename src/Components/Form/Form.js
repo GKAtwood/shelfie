@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+
 
 
 
@@ -22,7 +22,7 @@ class Form extends Component{
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangePrice =this.handleChangePrice.bind(this);
         this.onImageChange = this.onImageChange.bind(this);
-        this.addProduct = this.addProduct.bind(this);
+       
         
        
         
@@ -34,12 +34,7 @@ class Form extends Component{
         }
       }
 
-    addProduct = () => {
-        axios.post('/api/product', {productName: this.state.name, productPrice: this.state.price, productImg: this.state.imgurl})
-        .then(() => this.getInventory())
-        .catch(err => console.log(err))
-      }
-
+ 
     
        
   
@@ -80,14 +75,14 @@ class Form extends Component{
         <label>Image URL:
             <input type="file"   onChange={this.onImageChange}/>
         </label>
-        <label>Product Name:</label>
+        <label>Product Name:
             <input type ="text"  
                   onChange={this.handleChangeName}/>
-         
-        <label>Price:</label>
+         </label>
+        <label>Price:
             <input type ="number" 
                  onChange={this.handleChangePrice}/>
-            
+            </label>
             <button onClick={this.resetForm}>Cancel</button>
            
             <button  onClick={this.addProduct}>Add to Inventory</button>

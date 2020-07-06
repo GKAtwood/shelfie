@@ -6,6 +6,7 @@ const ctrl = require('./controller');
 const {SERVER_PORT, CONNECTION_STRING} = process.env
 
 
+
 app.use(express.json())
 
 massive({

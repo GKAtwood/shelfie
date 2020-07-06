@@ -13,7 +13,7 @@ module.exports = {
     
         console.log(req.body)
     
-        db.create_product({productName, productPrice, productImg})
+        db.create_product(productName, productPrice, productImg)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },
@@ -31,7 +31,7 @@ module.exports = {
               {productName, productPrice, productImg} = req.body,
               db = req.app.get('db');
 
-        db.edit_product({productName, productPrice, productImg, id})
+        db.edit_product(productName, productPrice, productImg)
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err))
     },

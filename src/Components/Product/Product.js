@@ -7,22 +7,22 @@ import React from 'react';
 
 
 const Product= (props) => {
-   console.log(props)
+   console.log(props.productList)
    return(
 
       
 
       <form className = 'Product'>
-              <h1 >{props.list[0]}
+              <h1 >{props.productList[0]}
               <button>Edit</button>
               <button>Delete</button>
              </h1>
-               <h2>  {props.list[1]}
+               <h2>  {props.productList[1]}
                 <button>Edit</button>
                 <button >Delete</button>                
                  </h2>
                 <h3>
-               {props.list[2]}
+               {props.productList[2]}
                 <button>Edit</button>
                 <button>Delete</button>
                </h3>

@@ -3,9 +3,9 @@ insert into products (
     price,
     img
 ) values (
-    ${productName},
-    ${price},
-    ${productImg}
+    $1,
+    $2,
+    $3
 );
 
 SELECT * FROM products; 

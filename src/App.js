@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
+import routes from './routes';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Form from './Components/Form/Form';
 import Header from './Components/Header/Header';
@@ -16,22 +17,23 @@ class App extends Component {
       products: [],
      
     }
-    this.getInventory = this.getInventory.bind(this);
+    // this.getInventory = this.getInventory.bind(this);
     this.deleteProduct =this.deleteProduct.bind(this);
     this.editProduct = this.editProduct.bind(this);
+    this.addProduct = this.addProduct.bind(this);
     
    
   }
 
-  componentDidMount(){
-    this.getInventory();
-  }
+  // componentDidMount(){
+  //   this.getInventory();
+  // }
 
-  getInventory = () => {    
-    axios.get('/api/inventory')
-    .then(res => this.setState({products: res.data}))
-    .catch(err => console.log(err))
-  }
+  // getInventory = () => {    
+  //   axios.get('/api/inventory')
+  //   .then(res => this.setState({products: res.data}))
+  //   .catch(err => console.log(err))
+  // }
 
   deleteProduct = () => {
     axios.delete(`/api/product/${this.props.products.product_id}`)
@@ -43,6 +45,13 @@ class App extends Component {
   .then(() => this.props.getInventory())
   .catch(err => console.log(err))
 }
+
+addProduct = () => {
+  axios.post('/api/product', {productName: this.state.name, productPrice: this.state.price, productImg: this.state.imgurl})
+  .then(() => this.getInventory())
+  .catch(err => console.log(err))
+}
+
   
 
    
@@ -56,9 +65,9 @@ render(){
    return(
     <div className="App">
       <Header />
-
-      <Dashboard productList={this.state.products} inventoryFn= {this.getInventory} deleteFn ={this.deleteProduct} editFn={this.editProduct}/>
-      <Form inventoryFn= {this.getInventory} />
+        {routes}
+      {/* <Dashboard productList={this.state.products} inventoryFn= {this.getInventory} deleteFn ={this.deleteProduct} editFn={this.editProduct}/> */}
+      {/* <Form inventoryFn= {this.getInventory} addFn ={this.addProduct} /> */}
   
 
       </div>
