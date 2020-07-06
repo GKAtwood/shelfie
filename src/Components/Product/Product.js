@@ -1,89 +1,34 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
+export default function Product(props) {
+	return (
+		<div className="product-box">
+			<img src={props.currentProduct.image_url} alt={props.currentProduct.name} className="product-image" />
+			<div className="product-information">
+				<div className="name-price">
+					<p>{props.currentProduct.name}</p>
+					<p>${props.currentProduct.price} </p>
+				</div>
 
-
-///no state////no methods
-
-
-
-const Product= (props) => {
-   console.log(props.productList)
-   return(
-
-      
-
-      <form className = 'Product'>
-              <h1 >{props.productList[0]}
-              <button>Edit</button>
-              <button>Delete</button>
-             </h1>
-               <h2>  {props.productList[1]}
-                <button>Edit</button>
-                <button >Delete</button>                
-                 </h2>
-                <h3>
-               {props.productList[2]}
-                <button>Edit</button>
-                <button>Delete</button>
-               </h3>
-                
-                
-                
-        </form>
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-   )
+				<div className="button-container">
+					<button
+						className="product-button"
+						onClick={() => {
+							axios.delete('/api/inventory/' + props.currentProduct.product_id).then(() => {
+								props.getItemList();
+							});
+						}}
+					>
+						{' '}
+						Delete
+					</button>
+					<Link to={"/edit-product-form/" + props.currentProduct.product_id}>
+						<button className="product-button">Edit</button>
+					</Link>
+				</div>
+			</div>
+		</div>
+	);
 }
-
-export default Product
-
-// export default class Product extends Component{
-   
-//  render(){
-//     console.log(this.props)
-    
-        
-
-//         return(
-//            <div className = 'Product'>
-//               <h1 >
-//                 {this.props.list[0]}
-//                 <button>Edit</button>
-//                 <button>Delete</button>
-//               </h1>
-//                <h2>
-//                 {this.props.list[1]}
-//                 <button>Edit</button>
-//                 <button >Delete</button>
-//                 </h2>
-//                 <h3>
-//                 {this.props.list[2]}
-//                 <button>Edit</button>
-//                 <button>Delete</button>
-//                 </h3>
-                
-                
-                
-               
-
-//            </div>
-        
-        
-    
-
-  
-//         )
-//  }
-// }

@@ -1,40 +1,50 @@
 module.exports = {
-    getInventory: (req, res) => {
-        const db = req.app.get('db');
+	read: (req, res, next) => {
+		const dbInstance = req.app.get('db');
 
-        db.get_inventory()
-        .then(products => res.status(200).send(products))
-        .catch(err => res.status(500).send(err))
-    },
+		dbInstance.get_inventory().then((products) => res.status(200).send(products)).catch((err) => {
+			res.status(500).send({ errorMessage: 'Something went wrong!' });
+			console.log(err);
+		});
+	},
+	create: (req, res, next) => {
+		const dbInstance = req.app.get('db');
+		const { name, price, image_url } = req.body;
 
-    addProduct: (req, res) => {
-        const {productName, productPrice, productImg} = req.body,
-              db = req.app.get('db');
-    
-        console.log(req.body)
-    
-        db.create_product(productName, productPrice, productImg)
-        .then(() => res.sendStatus(200))
-        .catch(err => res.status(500).send(err))
-    },
-    deleteProduct: (req, res) => {
-        const {id} = req.params,
-              db = req.app.get('db');
+		dbInstance.create_product([ name, price, image_url ]).then(() => res.sendStatus(200)).catch((err) => {
+			res.status(500).send({ errorMessage: 'Something went wrong!' });
+			console.log(err);
+		});
+	},
+	delete: (req, res, next) => {
+		const dbInstance = req.app.get('db');
+		const { id } = req.params;
 
-        db.delete_product(id)
-        .then(() => res.sendStatus(200))
-        .catch(err => res.status(500).send(err))
-    },
+		dbInstance.delete_product([ id ]).then(() => res.sendStatus(200)).catch((err) => {
+			res.status(500).send({ errorMessage: 'Something went wrong!' });
+			console.log(err);
+		});
+	},
+	update: (req, res, next) => {
+		const dbInstance = req.app.get('db');
+		const { name, price, image_url } = req.body;
+		const { id } = req.params;
 
-    editProduct: (req, res) => {
-        const {id} = req.params,
-              {productName, productPrice, productImg} = req.body,
-              db = req.app.get('db');
+		dbInstance.update_product([ id, name, price, image_url ]).then(() => res.sendStatus(200)).catch((err) => {
+			res.status(500).send({ errorMessage: 'Something went wrong!' });
+			console.log(err);
+		});
+	},
+	getOne: (req, res, next)=> {
+		const dbInstance = req.app.get('db');
+		const { id } = req.params;
 
-        db.edit_product(productName, productPrice, productImg)
-        .then(() => res.sendStatus(200))
-        .catch(err => res.status(500).send(err))
-    },
- 
-}
+		dbInstance.get_product([id])
+		.then( product => res.status(200).send( product ) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "Something went wrong!"});
+          console.log(err)
+        } );
+	}
+};
 

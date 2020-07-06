@@ -1,58 +1,41 @@
 import React, { Component } from 'react';
-import Product from '../Product/Product'
-import Form from '../Form/Form';
-import axios from 'axios';
+import Product from '../Product/Product';
+import './dashboard.css';
+import axios from 'axios'
 
-
-
-////no state///no methods
-
-export default class Dashboard extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            products:[],
-        }
-
-        this.getInventory = this.getInventory.bind(this);
-    }
-
-    componentDidMount(){
-        this.getInventory();
-      }
-
-      getInventory = () => {    
-        axios.get('/api/inventory')
-        .then(res => this.setState({products: res.data}))
-        .catch(err => console.log(err))
-      }
-
-    render(){
-        console.log(this.state)
-    const productList = this.state.products.map((item) => <div key={item.id}> {item.product_name}{item.price}{item.img}</div>);
-
-        return(
-            <div>
-            <section className ='product-box' >
-
-{this.state.products.map(function(item) {
-return (<li key={item.id}> <br/>{item.product_name}<br/>{item.price}<br/>{item.img}</li>)
-})}
-    <button>Edit</button>
-    <button>Delete</button>
-                
-                    
-            </section>
-
-             <Form inventoryFn= {this.getInventory} addFn ={this.addProduct} />
-            </div>
-
-         
-
-        )
-    }
-
+class Dashboard extends Component {
+	constructor(){
+		super()
+		this.state={
+			products:[]
+		}
+	}
+	componentWillMount() {
+		this.getItemList();
+	}
+	componentDidUpdate(){
+		this.getItemList()
+	}
+	getItemList() {
+		axios.get('/api/inventory').then((response) => {
+			this.setState({ products: response.data });
+		});
+	}
+	render() {
+		const list = this.state.products.map((product, index) => {
+			return (
+				<Product
+					getItemList={()=>this.getItemList()}
+					currentProduct={product}
+					key={index}
+				/>
+			);
+		});
+		return <div>{list}</div>;
+	}
 }
+export default Dashboard;
+
 // const Dashboard = (props) => {
 //     console.log(props)
    
