@@ -30,10 +30,10 @@ class Form extends Component {
     componentDidUpdate(props){
         if(props.match.params.id != this.props.match.params.id){
             this.setState({
-                name: "",
-			    price: "",
-			image_url: "",
-            currentId: null,
+                product_name: "",
+			          price: "",
+			          img: "",
+                currentId: null,
             })
         }
     }
